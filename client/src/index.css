@@ -3,11 +3,215 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    /* Light mode */
+    --background: 220 20% 97%;
+    --foreground: 220 10% 20%;
+    
+    --card: 220 25% 95%;
+    --card-foreground: 220 10% 20%;
+
+    --popover: 220 20% 97%;
+    --popover-foreground: 220 10% 20%;
+    
+    --primary: 220 10% 80%;
+    --primary-foreground: 220 10% 20%;
+    
+    --secondary: 220 5% 90%;
+    --secondary-foreground: 220 10% 20%;
+    
+    --muted: 220 10% 92%;
+    --muted-foreground: 220 10% 40%;
+    
+    --accent: 220 5% 90%;
+    --accent-foreground: 220 10% 20%;
+    
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 220 10% 98%;
+    
+    --border: 220 15% 85%;
+    --input: 220 15% 85%;
+    --ring: 220 10% 80%;
+    
+    --radius: 0.75rem;
+
+    /* Neumorphic Colors */
+    --neu-shadow-from: 220 20% 92%;
+    --neu-shadow-to: 220 20% 100%;
+    --neu-depth: 0.4rem;
+
+    /* Metallic Colors */
+    --gold: 45 80% 80%;
+    --silver: 220 20% 85%;
+    --copper: 20 60% 70%;
+  }
+
+  .dark {
+    /* Dark mode */
+    --background: 220 10% 15%;
+    --foreground: 220 10% 85%;
+    
+    --card: 220 10% 18%;
+    --card-foreground: 220 10% 85%;
+    
+    --popover: 220 10% 15%;
+    --popover-foreground: 220 10% 85%;
+    
+    --primary: 220 10% 25%;
+    --primary-foreground: 220 10% 85%;
+    
+    --secondary: 220 5% 20%;
+    --secondary-foreground: 220 10% 85%;
+    
+    --muted: 220 10% 20%;
+    --muted-foreground: 220 10% 70%;
+    
+    --accent: 220 5% 20%;
+    --accent-foreground: 220 10% 85%;
+    
+    --destructive: 0 75% 50%;
+    --destructive-foreground: 220 10% 90%;
+    
+    --border: 220 15% 25%;
+    --input: 220 15% 25%;
+    --ring: 220 10% 30%;
+
+    /* Neumorphic Colors */
+    --neu-shadow-from: 220 10% 10%;
+    --neu-shadow-to: 220 10% 20%;
+    --neu-depth: 0.4rem;
+
+    /* Metallic Colors */
+    --gold: 45 50% 50%;
+    --silver: 220 20% 65%;
+    --copper: 20 40% 40%;
+  }
+  
   * {
     @apply border-border;
   }
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Neumorphic Card */
+  .neu-card {
+    @apply bg-card rounded-xl relative;
+    box-shadow: 
+      var(--neu-depth) var(--neu-depth) calc(var(--neu-depth) * 2) hsl(var(--neu-shadow-from) / 0.2),
+      calc(var(--neu-depth) * -1) calc(var(--neu-depth) * -1) calc(var(--neu-depth) * 2) hsl(var(--neu-shadow-to) / 0.7);
+  }
+  
+  .neu-card-inset {
+    @apply bg-card rounded-xl relative;
+    box-shadow: 
+      inset var(--neu-depth) var(--neu-depth) calc(var(--neu-depth) * 2) hsl(var(--neu-shadow-from) / 0.2),
+      inset calc(var(--neu-depth) * -1) calc(var(--neu-depth) * -1) calc(var(--neu-depth) * 2) hsl(var(--neu-shadow-to) / 0.7);
+  }
+  
+  .neu-button {
+    @apply bg-primary rounded-xl relative transition-all duration-200 active:translate-y-0.5;
+    box-shadow: 
+      var(--neu-depth) var(--neu-depth) calc(var(--neu-depth) * 2) hsl(var(--neu-shadow-from) / 0.3),
+      calc(var(--neu-depth) * -1) calc(var(--neu-depth) * -1) calc(var(--neu-depth) * 2) hsl(var(--neu-shadow-to) / 0.7);
+  }
+  
+  .neu-button:active {
+    box-shadow: 
+      inset var(--neu-depth) var(--neu-depth) calc(var(--neu-depth) * 2) hsl(var(--neu-shadow-from) / 0.3),
+      inset calc(var(--neu-depth) * -1) calc(var(--neu-depth) * -1) calc(var(--neu-depth) * 2) hsl(var(--neu-shadow-to) / 0.7);
+  }
+  
+  /* Metallic Effect - Gold */
+  .gold-effect {
+    background: linear-gradient(135deg, hsl(var(--gold) / 0.9), hsl(var(--gold) / 0.5));
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .gold-effect::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 0%,
+      transparent 35%,
+      rgba(255, 255, 255, 0.4) 40%,
+      rgba(255, 255, 255, 0.4) 45%,
+      transparent 50%,
+      transparent 100%
+    );
+    transform: rotate(-45deg);
+    animation: shimmer 3s infinite;
+  }
+  
+  /* Metallic Effect - Silver */
+  .silver-effect {
+    background: linear-gradient(135deg, hsl(var(--silver) / 0.9), hsl(var(--silver) / 0.5));
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .silver-effect::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 0%,
+      transparent 35%,
+      rgba(255, 255, 255, 0.4) 40%,
+      rgba(255, 255, 255, 0.4) 45%,
+      transparent 50%,
+      transparent 100%
+    );
+    transform: rotate(-45deg);
+    animation: shimmer 3s infinite;
+  }
+  
+  /* Metallic Effect - Copper */
+  .copper-effect {
+    background: linear-gradient(135deg, hsl(var(--copper) / 0.9), hsl(var(--copper) / 0.5));
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .copper-effect::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 0%,
+      transparent 35%,
+      rgba(255, 255, 255, 0.4) 40%,
+      rgba(255, 255, 255, 0.4) 45%,
+      transparent 50%,
+      transparent 100%
+    );
+    transform: rotate(-45deg);
+    animation: shimmer 3s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+    100% {
+      transform: translate(50%, 50%) rotate(-45deg);
+    }
   }
 }
