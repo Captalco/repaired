@@ -155,7 +155,7 @@
   
   /* Metallic Effect - Gold */
   .gold-effect {
-    background: hsl(var(--gold) / 1);
+    background: hsl(var(--gold) / 0.3);
     position: relative;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -163,7 +163,7 @@
   
   /* Metallic Effect - Silver */
   .silver-effect {
-    background: hsl(var(--silver) / 0.9);
+    background: hsl(var(--silver) / 0.3);
     position: relative;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -171,7 +171,7 @@
   
   /* Metallic Effect - Copper */
   .copper-effect {
-    background: hsl(var(--copper) / 0.9);
+    background: hsl(var(--copper) / 0.3);
     position: relative;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);

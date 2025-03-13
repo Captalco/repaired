@@ -109,10 +109,10 @@ export default function Header() {
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center">
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden relative">
+            <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center overflow-hidden relative">
             </div>
             <span className="text-xl font-bold font-sans text-foreground">
-              repaired<span className="silver-effect px-1 py-0.5 rounded text-background">.co</span>
+              repaired.co
             </span>
           </Link>
           
@@ -120,28 +120,28 @@ export default function Header() {
           <nav className="hidden lg:flex space-x-8">
             <button 
               onClick={() => scrollToSection("features")}
-              className="flex items-center space-x-1.5 text-muted-foreground hover:text-foreground transition-colors duration-200 group neu-button px-4 py-2"
+              className="flex items-center space-x-1.5 text-muted-foreground hover:text-foreground transition-colors duration-200 group bg-primary px-4 py-2 rounded-xl"
             >
               <StackIcon className="w-4 h-4 opacity-70 group-hover:opacity-100" />
               <span>Features</span>
             </button>
             <button 
               onClick={() => scrollToSection("pricing")}
-              className="flex items-center space-x-1.5 text-muted-foreground hover:text-foreground transition-colors duration-200 group neu-button px-4 py-2"
+              className="flex items-center space-x-1.5 text-muted-foreground hover:text-foreground transition-colors duration-200 group bg-primary px-4 py-2 rounded-xl"
             >
               <CubeIcon className="w-4 h-4 opacity-70 group-hover:opacity-100" />
               <span>Pricing</span>
             </button>
             <button 
               onClick={() => scrollToSection("about")}
-              className="flex items-center space-x-1.5 text-muted-foreground hover:text-foreground transition-colors duration-200 group neu-button px-4 py-2"
+              className="flex items-center space-x-1.5 text-muted-foreground hover:text-foreground transition-colors duration-200 group bg-primary px-4 py-2 rounded-xl"
             >
               <InfoCircledIcon className="w-4 h-4 opacity-70 group-hover:opacity-100" />
               <span>About</span>
             </button>
             <button 
               onClick={() => scrollToSection("contact")}
-              className="flex items-center space-x-1.5 text-muted-foreground hover:text-foreground transition-colors duration-200 group neu-button px-4 py-2"
+              className="flex items-center space-x-1.5 text-muted-foreground hover:text-foreground transition-colors duration-200 group bg-primary px-4 py-2 rounded-xl"
             >
               <MobileIcon className="w-4 h-4 opacity-70 group-hover:opacity-100" />
               <span>Contact</span>

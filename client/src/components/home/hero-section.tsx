@@ -70,8 +70,8 @@ export default function HeroSection() {
             variants={fadeIn}
           >
             <div className="neu-card p-8 rounded-2xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                Built For <span className="gold-effect px-2 py-1 rounded">Re-Manufacturing</span>, Not Production Lines
+              <h1 className="text-3xl md:text-4xl lg:text-4xl font-bold leading-tight mb-6">
+                Built For <span className="gold-effect px-2 py-1 rounded text-foreground">Re-Manufacturing</span>, Not Production Lines
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8">
                 While most software focuses on traditional manufacturing, repaired.co is specifically engineered for re-manufacturing facilities, using advanced computer vision and AI to revolutionize core restoration workflows.
