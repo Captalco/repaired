@@ -3,12 +3,14 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { 
-  GridIcon, 
-  DotFilledIcon, 
+  StackIcon, 
+  CubeIcon, 
   InfoCircledIcon, 
   MobileIcon,
   EnterIcon,
-  RocketIcon
+  RocketIcon,
+  Cross2Icon,
+  HamburgerMenuIcon
 } from "@radix-ui/react-icons";
 
 export default function Header() {
@@ -59,19 +61,19 @@ export default function Header() {
           </Link>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden lg:flex space-x-8">
             <button 
               onClick={() => scrollToSection("features")}
               className="flex items-center space-x-1.5 text-muted-foreground hover:text-white transition-colors duration-200 group"
             >
-              <GridIcon className="w-4 h-4 opacity-70 group-hover:opacity-100" />
+              <StackIcon className="w-4 h-4 opacity-70 group-hover:opacity-100" />
               <span>Features</span>
             </button>
             <button 
               onClick={() => scrollToSection("pricing")}
               className="flex items-center space-x-1.5 text-muted-foreground hover:text-white transition-colors duration-200 group"
             >
-              <DotFilledIcon className="w-4 h-4 opacity-70 group-hover:opacity-100" />
+              <CubeIcon className="w-4 h-4 opacity-70 group-hover:opacity-100" />
               <span>Pricing</span>
             </button>
             <button 
@@ -90,7 +92,7 @@ export default function Header() {
             </button>
           </nav>
           
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4">
             <Button variant="ghost" className="text-muted-foreground hover:text-white" size="sm">
               <EnterIcon className="w-4 h-4 mr-1.5" />
               Login
@@ -103,37 +105,33 @@ export default function Header() {
           
           {/* Mobile menu button */}
           <button 
-            className="md:hidden text-white p-2"
+            className="lg:hidden text-white p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? (
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-x">
-                <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
-              </svg>
+              <Cross2Icon className="w-5 h-5" />
             ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-menu">
-                <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
-              </svg>
+              <HamburgerMenuIcon className="w-5 h-5" />
             )}
           </button>
         </div>
         
         {/* Mobile Navigation - Fly-out Box */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute left-0 right-0 mt-2 bg-black/90 backdrop-blur-md border border-gray-800 rounded-md shadow-xl p-4 transform transition-all duration-200 ease-out">
+          <div className="lg:hidden absolute left-0 right-0 mt-2 bg-black/90 backdrop-blur-md border border-gray-800 rounded-md shadow-xl p-4 transform transition-all duration-200 ease-out">
             <div className="space-y-3">
               <button 
                 onClick={() => scrollToSection("features")}
                 className="flex items-center w-full px-3 py-2 text-left text-white hover:bg-white/10 rounded-md transition-colors duration-200"
               >
-                <GridIcon className="w-5 h-5 mr-3" />
+                <StackIcon className="w-5 h-5 mr-3" />
                 <span>Features</span>
               </button>
               <button 
                 onClick={() => scrollToSection("pricing")}
                 className="flex items-center w-full px-3 py-2 text-left text-white hover:bg-white/10 rounded-md transition-colors duration-200"
               >
-                <DotFilledIcon className="w-5 h-5 mr-3" />
+                <CubeIcon className="w-5 h-5 mr-3" />
                 <span>Pricing</span>
               </button>
               <button 
