@@ -13,6 +13,7 @@ import {
   SunIcon,
   MoonIcon
 } from "@radix-ui/react-icons";
+import { useTheme } from "../../App"; // Import the theme context
 
 // Simple utility function to combine class names
 const cn = (...classes: (string | boolean | undefined)[]) => 
@@ -20,7 +21,7 @@ const cn = (...classes: (string | boolean | undefined)[]) =>
 
 // Simple button component
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'default' | 'outline' | 'ghost';
+  variant?: 'default' | 'outline' | 'ghost' | 'gold' | 'silver' | 'copper';
   size?: 'sm' | 'md' | 'lg';
   asChild?: boolean;
   className?: string;
@@ -39,7 +40,10 @@ const Button = ({
   const variantStyles = {
     default: "neu-button text-primary-foreground",
     outline: "neu-card border-2 border-border hover:border-primary/50",
-    ghost: "hover:bg-primary/10"
+    ghost: "hover:bg-primary/10",
+    gold: "gold-effect text-primary-foreground",
+    silver: "silver-effect text-primary-foreground",
+    copper: "copper-effect text-primary-foreground"
   };
   
   const sizeStyles = {
@@ -67,7 +71,9 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [, setLocation] = useLocation();
-  const [theme, setTheme] = useState('dark');
+  
+  // Get theme context
+  const { theme, toggleTheme } = useTheme();
 
   const handleScroll = () => {
     setScrolled(window.scrollY > 20);
@@ -78,21 +84,6 @@ export default function Header() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-    if (newTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  };
-
-  // Force dark mode on initial load
-  useEffect(() => {
-    document.documentElement.classList.add('dark');
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -118,10 +109,7 @@ export default function Header() {
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center">
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-full gold-effect flex items-center justify-center overflow-hidden relative">
-              <div className="w-5 h-5 rounded-full bg-background flex items-center justify-center">
-                <LightningBoltIcon className="w-3 h-3 text-foreground" />
-              </div>
+            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden relative">
             </div>
             <span className="text-xl font-bold font-sans text-foreground">
               repaired<span className="silver-effect px-1 py-0.5 rounded text-background">.co</span>
@@ -163,18 +151,26 @@ export default function Header() {
           <div className="hidden lg:flex items-center space-x-4">
             <button 
               onClick={toggleTheme} 
-              className="p-2 rounded-full neu-button text-foreground"
+              className="neu-button p-2 rounded-full flex items-center justify-center"
               aria-label="Toggle theme"
             >
-              {theme === 'dark' ? <SunIcon className="w-4 h-4" /> : <MoonIcon className="w-4 h-4" />}
+              {theme === 'dark' ? (
+                <span className="gold-effect w-7 h-7 flex items-center justify-center rounded-full">
+                  <SunIcon className="w-4 h-4 text-background" />
+                </span>
+              ) : (
+                <span className="silver-effect w-7 h-7 flex items-center justify-center rounded-full">
+                  <MoonIcon className="w-4 h-4 text-background" />
+                </span>
+              )}
             </button>
             
-            <Button variant="ghost" className="text-muted-foreground hover:text-foreground" size="sm">
+            <Button variant="outline" className="text-muted-foreground hover:text-foreground" size="sm">
               <EnterIcon className="w-4 h-4 mr-1.5" />
               Login
             </Button>
             
-            <Button className="copper-effect text-primary-foreground px-4 py-2" size="sm">
+            <Button variant="copper" className="text-primary-foreground px-4 py-2" size="sm">
               <RocketIcon className="w-4 h-4 mr-1.5" />
               Get Started
             </Button>
@@ -184,10 +180,18 @@ export default function Header() {
           <div className="lg:hidden flex items-center space-x-2">
             <button 
               onClick={toggleTheme} 
-              className="p-2 rounded-full neu-button text-foreground"
+              className="neu-button p-2 rounded-full flex items-center justify-center"
               aria-label="Toggle theme"
             >
-              {theme === 'dark' ? <SunIcon className="w-4 h-4" /> : <MoonIcon className="w-4 h-4" />}
+              {theme === 'dark' ? (
+                <span className="gold-effect w-7 h-7 flex items-center justify-center rounded-full">
+                  <SunIcon className="w-4 h-4 text-background" />
+                </span>
+              ) : (
+                <span className="silver-effect w-7 h-7 flex items-center justify-center rounded-full">
+                  <MoonIcon className="w-4 h-4 text-background" />
+                </span>
+              )}
             </button>
             
             <button 
@@ -240,7 +244,7 @@ export default function Header() {
                   <EnterIcon className="w-4 h-4 mr-1.5" />
                   Login
                 </Button>
-                <Button className="w-full copper-effect text-primary-foreground" size="sm">
+                <Button variant="copper" className="w-full text-primary-foreground" size="sm">
                   <RocketIcon className="w-4 h-4 mr-1.5" />
                   Get Started
                 </Button>

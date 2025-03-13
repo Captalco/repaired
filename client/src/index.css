@@ -5,86 +5,92 @@
 @layer base {
   :root {
     /* Light mode */
-    --background: 220 20% 97%;
+    --background: 210 30% 99%;
     --foreground: 220 10% 20%;
     
-    --card: 220 25% 95%;
+    --card: 210 30% 96%;
     --card-foreground: 220 10% 20%;
 
-    --popover: 220 20% 97%;
+    --popover: 210 30% 99%;
     --popover-foreground: 220 10% 20%;
     
-    --primary: 220 10% 80%;
+    --primary: 210 25% 85%;
     --primary-foreground: 220 10% 20%;
     
-    --secondary: 220 5% 90%;
+    --secondary: 220 5% 92%;
     --secondary-foreground: 220 10% 20%;
     
-    --muted: 220 10% 92%;
+    --muted: 220 10% 94%;
     --muted-foreground: 220 10% 40%;
     
     --accent: 220 5% 90%;
     --accent-foreground: 220 10% 20%;
     
     --destructive: 0 85% 60%;
-    --destructive-foreground: 220 10% 98%;
+    --destructive-foreground: 210 30% 99%;
     
     --border: 220 15% 85%;
     --input: 220 15% 85%;
-    --ring: 220 10% 80%;
+    --ring: 210 25% 85%;
     
     --radius: 0.75rem;
 
     /* Neumorphic Colors */
-    --neu-shadow-from: 220 20% 92%;
-    --neu-shadow-to: 220 20% 100%;
-    --neu-depth: 0.4rem;
+    --neu-shadow-from: 210 20% 88%; 
+    --neu-shadow-to: 210 30% 100%;
+    --neu-depth: 0.35rem;
+    --neu-blur: 0.8rem;
+    --neu-opacity-from: 0.2;
+    --neu-opacity-to: 0.7;
 
     /* Metallic Colors */
-    --gold: 45 80% 80%;
-    --silver: 220 20% 85%;
+    --gold: 45 85% 75%;
+    --silver: 220 10% 85%;
     --copper: 20 60% 70%;
   }
 
   .dark {
     /* Dark mode */
-    --background: 220 10% 15%;
-    --foreground: 220 10% 85%;
+    --background: 220 15% 12%;
+    --foreground: 220 10% 90%;
     
-    --card: 220 10% 18%;
-    --card-foreground: 220 10% 85%;
+    --card: 220 15% 16%;
+    --card-foreground: 220 10% 90%;
     
-    --popover: 220 10% 15%;
-    --popover-foreground: 220 10% 85%;
+    --popover: 220 15% 12%;
+    --popover-foreground: 220 10% 90%;
     
-    --primary: 220 10% 25%;
-    --primary-foreground: 220 10% 85%;
+    --primary: 220 15% 22%;
+    --primary-foreground: 220 10% 90%;
     
-    --secondary: 220 5% 20%;
-    --secondary-foreground: 220 10% 85%;
+    --secondary: 220 10% 20%;
+    --secondary-foreground: 220 10% 90%;
     
-    --muted: 220 10% 20%;
+    --muted: 220 15% 18%;
     --muted-foreground: 220 10% 70%;
     
-    --accent: 220 5% 20%;
-    --accent-foreground: 220 10% 85%;
+    --accent: 220 10% 20%;
+    --accent-foreground: 220 10% 90%;
     
     --destructive: 0 75% 50%;
     --destructive-foreground: 220 10% 90%;
     
-    --border: 220 15% 25%;
-    --input: 220 15% 25%;
-    --ring: 220 10% 30%;
+    --border: 220 15% 22%;
+    --input: 220 15% 22%;
+    --ring: 220 15% 28%;
 
-    /* Neumorphic Colors */
-    --neu-shadow-from: 220 10% 10%;
-    --neu-shadow-to: 220 10% 20%;
-    --neu-depth: 0.4rem;
+    /* Neumorphic Colors - More pronounced in dark mode */
+    --neu-shadow-from: 220 15% 8%;
+    --neu-shadow-to: 220 15% 20%;
+    --neu-depth: 0.35rem;
+    --neu-blur: 0.8rem;
+    --neu-opacity-from: 0.4;
+    --neu-opacity-to: 0.15;
 
-    /* Metallic Colors */
-    --gold: 45 50% 50%;
-    --silver: 220 20% 65%;
-    --copper: 20 40% 40%;
+    /* Metallic Colors - More saturated in dark mode */
+    --gold: 45 60% 55%;
+    --silver: 220 20% 70%;
+    --copper: 20 50% 50%;
   }
   
   * {
@@ -93,6 +99,28 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 0.8rem; /* Reduced body text size by 20% */
+  }
+
+  /* Reduce h1 size by 20% */
+  h1 {
+    font-size: 2.25rem; /* 3rem * 0.8 = 2.4rem, rounded down slightly */
+    line-height: 2.5rem;
+  }
+
+  /* Add transition for all elements */
+  * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Ensure button text stays on one line */
+  button, 
+  .btn,
+  [role="button"] {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
@@ -101,117 +129,56 @@
   .neu-card {
     @apply bg-card rounded-xl relative;
     box-shadow: 
-      var(--neu-depth) var(--neu-depth) calc(var(--neu-depth) * 2) hsl(var(--neu-shadow-from) / 0.2),
-      calc(var(--neu-depth) * -1) calc(var(--neu-depth) * -1) calc(var(--neu-depth) * 2) hsl(var(--neu-shadow-to) / 0.7);
+      var(--neu-depth) var(--neu-depth) var(--neu-blur) hsl(var(--neu-shadow-from) / var(--neu-opacity-from)),
+      calc(var(--neu-depth) * -1) calc(var(--neu-depth) * -1) var(--neu-blur) hsl(var(--neu-shadow-to) / var(--neu-opacity-to));
   }
   
   .neu-card-inset {
     @apply bg-card rounded-xl relative;
     box-shadow: 
-      inset var(--neu-depth) var(--neu-depth) calc(var(--neu-depth) * 2) hsl(var(--neu-shadow-from) / 0.2),
-      inset calc(var(--neu-depth) * -1) calc(var(--neu-depth) * -1) calc(var(--neu-depth) * 2) hsl(var(--neu-shadow-to) / 0.7);
+      inset var(--neu-depth) var(--neu-depth) var(--neu-blur) hsl(var(--neu-shadow-from) / var(--neu-opacity-from)),
+      inset calc(var(--neu-depth) * -1) calc(var(--neu-depth) * -1) var(--neu-blur) hsl(var(--neu-shadow-to) / var(--neu-opacity-to));
   }
   
   .neu-button {
     @apply bg-primary rounded-xl relative transition-all duration-200 active:translate-y-0.5;
     box-shadow: 
-      var(--neu-depth) var(--neu-depth) calc(var(--neu-depth) * 2) hsl(var(--neu-shadow-from) / 0.3),
-      calc(var(--neu-depth) * -1) calc(var(--neu-depth) * -1) calc(var(--neu-depth) * 2) hsl(var(--neu-shadow-to) / 0.7);
+      var(--neu-depth) var(--neu-depth) var(--neu-blur) hsl(var(--neu-shadow-from) / var(--neu-opacity-from)),
+      calc(var(--neu-depth) * -1) calc(var(--neu-depth) * -1) var(--neu-blur) hsl(var(--neu-shadow-to) / var(--neu-opacity-to));
   }
   
   .neu-button:active {
     box-shadow: 
-      inset var(--neu-depth) var(--neu-depth) calc(var(--neu-depth) * 2) hsl(var(--neu-shadow-from) / 0.3),
-      inset calc(var(--neu-depth) * -1) calc(var(--neu-depth) * -1) calc(var(--neu-depth) * 2) hsl(var(--neu-shadow-to) / 0.7);
+      inset var(--neu-depth) var(--neu-depth) var(--neu-blur) hsl(var(--neu-shadow-from) / var(--neu-opacity-from)),
+      inset calc(var(--neu-depth) * -1) calc(var(--neu-depth) * -1) var(--neu-blur) hsl(var(--neu-shadow-to) / var(--neu-opacity-to));
   }
   
   /* Metallic Effect - Gold */
   .gold-effect {
-    background: linear-gradient(135deg, hsl(var(--gold) / 0.9), hsl(var(--gold) / 0.5));
+    background: hsl(var(--gold) / 1);
     position: relative;
     overflow: hidden;
-  }
-  
-  .gold-effect::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-      45deg,
-      transparent 0%,
-      transparent 35%,
-      rgba(255, 255, 255, 0.4) 40%,
-      rgba(255, 255, 255, 0.4) 45%,
-      transparent 50%,
-      transparent 100%
-    );
-    transform: rotate(-45deg);
-    animation: shimmer 3s infinite;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
   
   /* Metallic Effect - Silver */
   .silver-effect {
-    background: linear-gradient(135deg, hsl(var(--silver) / 0.9), hsl(var(--silver) / 0.5));
+    background: hsl(var(--silver) / 0.9);
     position: relative;
     overflow: hidden;
-  }
-  
-  .silver-effect::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-      45deg,
-      transparent 0%,
-      transparent 35%,
-      rgba(255, 255, 255, 0.4) 40%,
-      rgba(255, 255, 255, 0.4) 45%,
-      transparent 50%,
-      transparent 100%
-    );
-    transform: rotate(-45deg);
-    animation: shimmer 3s infinite;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
   
   /* Metallic Effect - Copper */
   .copper-effect {
-    background: linear-gradient(135deg, hsl(var(--copper) / 0.9), hsl(var(--copper) / 0.5));
+    background: hsl(var(--copper) / 0.9);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
-  
-  .copper-effect::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-      45deg,
-      transparent 0%,
-      transparent 35%,
-      rgba(255, 255, 255, 0.4) 40%,
-      rgba(255, 255, 255, 0.4) 45%,
-      transparent 50%,
-      transparent 100%
-    );
-    transform: rotate(-45deg);
-    animation: shimmer 3s infinite;
-  }
-  
-  @keyframes shimmer {
-    0% {
-      transform: translate(-50%, -50%) rotate(-45deg);
-    }
-    100% {
-      transform: translate(50%, 50%) rotate(-45deg);
-    }
+
+  /* Light/Dark mode transition helper */
+  .theme-transition {
+    transition: all 0.3s ease;
   }
 }
