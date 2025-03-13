@@ -3,13 +3,13 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { 
-  Puzzle, 
-  Tag, 
-  Info, 
-  Phone,
-  LogIn,
-  Rocket
-} from "lucide-react";
+  GridIcon, 
+  DotFilledIcon, 
+  InfoCircledIcon, 
+  MobileIcon,
+  EnterIcon,
+  RocketIcon
+} from "@radix-ui/react-icons";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -64,39 +64,39 @@ export default function Header() {
               onClick={() => scrollToSection("features")}
               className="flex items-center space-x-1.5 text-muted-foreground hover:text-white transition-colors duration-200 group"
             >
-              <Puzzle size={16} className="opacity-70 group-hover:opacity-100" />
+              <GridIcon className="w-4 h-4 opacity-70 group-hover:opacity-100" />
               <span>Features</span>
             </button>
             <button 
               onClick={() => scrollToSection("pricing")}
               className="flex items-center space-x-1.5 text-muted-foreground hover:text-white transition-colors duration-200 group"
             >
-              <Tag size={16} className="opacity-70 group-hover:opacity-100" />
+              <DotFilledIcon className="w-4 h-4 opacity-70 group-hover:opacity-100" />
               <span>Pricing</span>
             </button>
             <button 
               onClick={() => scrollToSection("about")}
               className="flex items-center space-x-1.5 text-muted-foreground hover:text-white transition-colors duration-200 group"
             >
-              <Info size={16} className="opacity-70 group-hover:opacity-100" />
+              <InfoCircledIcon className="w-4 h-4 opacity-70 group-hover:opacity-100" />
               <span>About</span>
             </button>
             <button 
               onClick={() => scrollToSection("contact")}
               className="flex items-center space-x-1.5 text-muted-foreground hover:text-white transition-colors duration-200 group"
             >
-              <Phone size={16} className="opacity-70 group-hover:opacity-100" />
+              <MobileIcon className="w-4 h-4 opacity-70 group-hover:opacity-100" />
               <span>Contact</span>
             </button>
           </nav>
           
           <div className="hidden md:flex items-center space-x-4">
             <Button variant="ghost" className="text-muted-foreground hover:text-white" size="sm">
-              <LogIn size={16} className="mr-1.5" />
+              <EnterIcon className="w-4 h-4 mr-1.5" />
               Login
             </Button>
             <Button variant="outline" className="border-white text-white hover:bg-white hover:text-black transition-colors" size="sm">
-              <Rocket size={16} className="mr-1.5" />
+              <RocketIcon className="w-4 h-4 mr-1.5" />
               Get Started
             </Button>
           </div>
@@ -126,37 +126,37 @@ export default function Header() {
                 onClick={() => scrollToSection("features")}
                 className="flex items-center w-full px-3 py-2 text-left text-white hover:bg-white/10 rounded-md transition-colors duration-200"
               >
-                <Puzzle size={18} className="mr-3" />
+                <GridIcon className="w-5 h-5 mr-3" />
                 <span>Features</span>
               </button>
               <button 
                 onClick={() => scrollToSection("pricing")}
                 className="flex items-center w-full px-3 py-2 text-left text-white hover:bg-white/10 rounded-md transition-colors duration-200"
               >
-                <Tag size={18} className="mr-3" />
+                <DotFilledIcon className="w-5 h-5 mr-3" />
                 <span>Pricing</span>
               </button>
               <button 
                 onClick={() => scrollToSection("about")}
                 className="flex items-center w-full px-3 py-2 text-left text-white hover:bg-white/10 rounded-md transition-colors duration-200"
               >
-                <Info size={18} className="mr-3" />
+                <InfoCircledIcon className="w-5 h-5 mr-3" />
                 <span>About</span>
               </button>
               <button 
                 onClick={() => scrollToSection("contact")}
                 className="flex items-center w-full px-3 py-2 text-left text-white hover:bg-white/10 rounded-md transition-colors duration-200"
               >
-                <Phone size={18} className="mr-3" />
+                <MobileIcon className="w-5 h-5 mr-3" />
                 <span>Contact</span>
               </button>
               <div className="pt-2 grid grid-cols-2 gap-2">
                 <Button variant="ghost" className="w-full text-white border border-gray-700" size="sm">
-                  <LogIn size={16} className="mr-1.5" />
+                  <EnterIcon className="w-4 h-4 mr-1.5" />
                   Login
                 </Button>
                 <Button className="w-full bg-white text-black hover:bg-gray-200" size="sm">
-                  <Rocket size={16} className="mr-1.5" />
+                  <RocketIcon className="w-4 h-4 mr-1.5" />
                   Get Started
                 </Button>
               </div>
