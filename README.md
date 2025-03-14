@@ -1,4 +1,6 @@
-# Electric Motor Logo Showcase
+# repaired.co official sote 
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1777af33-5390-400b-b604-f862eeca356e/deploy-status)](https://app.netlify.com/sites/repaired/deploys)
 
 A dynamic electric motor logo showcase website with advanced visual interactions, designed to provide an engaging and responsive user experience for exploring brand identities.
 
