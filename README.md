@@ -29,8 +29,8 @@ A dynamic electric motor logo showcase website with advanced visual interactions
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/electric-motor-logos.git
-   cd electric-motor-logos
+   git clone https://github.com/Captalco/repaired.git
+   cd repaired
    ```
 
 2. Install dependencies:
