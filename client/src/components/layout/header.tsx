@@ -13,7 +13,7 @@ import {
   SunIcon,
   MoonIcon
 } from "@radix-ui/react-icons";
-import { useTheme } from "../../App";
+import { useTheme } from "../../contexts/theme-context";
 
 // Simple utility function to combine class names
 const cn = (...classes: (string | boolean | undefined)[]) => 
@@ -150,7 +150,10 @@ export default function Header() {
           
           <div className="hidden lg:flex items-center space-x-4">
             <button 
-              onClick={toggleTheme} 
+              onClick={() => {
+                console.log("Desktop theme toggle clicked, current theme:", theme);
+                toggleTheme();
+              }} 
               className="neu-button p-2 rounded-full flex items-center justify-center"
               aria-label="Toggle theme"
             >
