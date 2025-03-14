@@ -117,7 +117,7 @@ export default function FeaturesSection() {
             <div className="neu-card p-6 rounded-xl">
               <span className="silver-effect px-2 py-1 rounded font-medium inline-block mb-2">Re-Manufacturing Intelligence</span>
               <h3 className="text-2xl md:text-3xl font-bold mb-4">Optimize Your Restoration Process</h3>
-              <p className="text-muted-foreground mb-6">Purpose-built analytics for re-manufacturing that track core recovery rates, restoration costs, and inventory forecasts - metrics that general manufacturing systems simply can't provide.</p>
+              <p className="text-foreground mb-6">Purpose-built analytics for re-manufacturing that track core recovery rates, restoration costs, and inventory forecasts - metrics that general manufacturing systems simply can't provide.</p>
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <span className="silver-effect w-6 h-6 flex items-center justify-center rounded-full mr-3">
@@ -204,7 +204,7 @@ export default function FeaturesSection() {
             <div className="neu-card p-6 rounded-xl">
               <span className="copper-effect px-2 py-1 rounded font-medium inline-block mb-2">Cross-Department Integration</span>
               <h3 className="text-2xl md:text-3xl font-bold mb-4">Connect Your Entire Re-Manufacturing Ecosystem</h3>
-              <p className="text-muted-foreground mb-6">Bridge the unique gap between core acquisition, disassembly, cleaning, inspection, re-engineering, and quality assurance departments with specialized workflows for each stage of the restoration process.</p>
+              <p className="text-foreground mb-6">Bridge the unique gap between core acquisition, disassembly, cleaning, inspection, re-engineering, and quality assurance departments with specialized workflows for each stage of the restoration process.</p>
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <span className="copper-effect w-6 h-6 flex items-center justify-center rounded-full mr-3">
@@ -235,21 +235,21 @@ export default function FeaturesSection() {
               <MapPin className="text-background" />
             </div>
             <h4 className="text-xl font-bold mb-3">Core Supplier Network</h4>
-            <p className="text-muted-foreground">Manage your core supplier relationships with geographic tracking, quality metrics, and automated ordering based on inventory needs and supplier performance.</p>
+            <p className="text-foreground">Manage your core supplier relationships with geographic tracking, quality metrics, and automated ordering based on inventory needs and supplier performance.</p>
           </MotionDiv>
           <MotionDiv delay={0.2} className="neu-card p-6 rounded-xl">
             <div className="w-12 h-12 silver-effect rounded-lg flex items-center justify-center mb-4">
               <Cpu className="text-background" />
             </div>
             <h4 className="text-xl font-bold mb-3">Part Recognition AI</h4>
-            <p className="text-muted-foreground">Our proprietary computer vision technology automatically identifies components, assesses condition, and catalogs parts for efficient inventory management and processing.</p>
+            <p className="text-foreground">Our proprietary computer vision technology automatically identifies components, assesses condition, and catalogs parts for efficient inventory management and processing.</p>
           </MotionDiv>
           <MotionDiv delay={0.3} className="neu-card p-6 rounded-xl">
             <div className="w-12 h-12 copper-effect rounded-lg flex items-center justify-center mb-4">
               <Scan className="text-background" />
             </div>
             <h4 className="text-xl font-bold mb-3">3D Inspection</h4>
-            <p className="text-muted-foreground">Advanced optical scanning technology creates digital twins of cores and components, allowing for precise measurement and comparison against OEM specifications.</p>
+            <p className="text-foreground">Advanced optical scanning technology creates digital twins of cores and components, allowing for precise measurement and comparison against OEM specifications.</p>
           </MotionDiv>
         </div>
       </div>

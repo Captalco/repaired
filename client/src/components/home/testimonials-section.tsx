@@ -25,8 +25,8 @@ export default function TestimonialsSection() {
       <div className="container mx-auto px-4 sm:px-6">
         <MotionDiv className="text-center max-w-3xl mx-auto mb-16">
           <Badge className="mb-4 bg-primary/10 text-primary hover:bg-primary/20 px-3 py-1">Testimonials</Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">What Our Customers Say</h2>
-          <p className="text-lg text-muted-foreground">Organizations of all sizes trust repaired.co to transform their field operations.</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">What Our Customers Say</h2>
+          <p className="text-lg text-foreground">Organizations of all sizes trust repaired.co to transform their field operations.</p>
         </MotionDiv>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -38,12 +38,12 @@ export default function TestimonialsSection() {
                   <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" />
                 </svg>
               </div>
-              <p className="text-muted-foreground mb-6">{testimonial.quote}</p>
+              <p className="text-foreground mb-6">{testimonial.quote}</p>
               <div className="flex items-center">
                 <div className="w-12 h-12 rounded-full bg-gray-700 mr-4"></div>
                 <div>
                   <p className="font-medium">{testimonial.name}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.title}</p>
+                  <p className="text-sm text-foreground">{testimonial.title}</p>
                 </div>
               </div>
             </MotionDiv>
