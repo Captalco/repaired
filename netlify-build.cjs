@@ -1,6 +1,8 @@
-#!/usr/bin/env node
+/**
+ * Netlify build script to prepare the project for deployment
+ * This file must be CommonJS to ensure maximum compatibility with Netlify build process
+ */
 
-// Netlify build script to prepare the project for deployment
 const { execSync } = require('child_process');
 
 try {

@@ -20,9 +20,9 @@ if [ -z "$NETLIFY_AUTH_TOKEN" ]; then
     exit 1
 fi
 
-# Make netlify-build.js executable
-echo "📜 Making build script executable..."
-chmod +x netlify-build.js
+# Make sure build script has appropriate permissions
+echo "📜 Setting build script permissions..."
+chmod 644 netlify-build.cjs
 
 # Use the token for non-interactive authentication
 echo "🔑 Authenticating with Netlify using token..."

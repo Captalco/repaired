@@ -1,10 +1,10 @@
 [build]
-  command = "chmod +x netlify-build.js && ./netlify-build.js"
+  command = "node netlify-build.cjs"
   publish = "dist"
   functions = "dist/netlify/functions"
   
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
 
 [dev]
   command = "npm run dev"

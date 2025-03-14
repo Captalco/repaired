@@ -1,0 +1,17 @@
+{
+  "name": "netlify-functions",
+  "version": "1.0.0",
+  "description": "Netlify functions for electric motor logos app",
+  "type": "commonjs",
+  "main": "api.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "serverless-http": "^3.2.0",
+    "pg": "^8.14.0",
+    "drizzle-orm": "^0.39.3",
+    "cors": "^2.8.5"
+  }
+}
