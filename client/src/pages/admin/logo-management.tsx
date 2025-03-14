@@ -292,8 +292,8 @@ export default function LogoManagement() {
                       </div>
                       <FormControl>
                         <Switch
-                          checked={field.value ?? false}
-                          onCheckedChange={field.onChange}
+                          checked={field.value === true}
+                          onCheckedChange={(checked) => field.onChange(checked)}
                         />
                       </FormControl>
                     </FormItem>
@@ -456,8 +456,8 @@ export default function LogoManagement() {
                     </div>
                     <FormControl>
                       <Switch
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
+                        checked={field.value === true}
+                        onCheckedChange={(checked) => field.onChange(checked)}
                       />
                     </FormControl>
                   </FormItem>
