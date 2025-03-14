@@ -47,12 +47,27 @@ This guide walks you through deploying your Motor Logos application to Netlify.
 
 ## Important: Environment Variables
 
-After deployment, you need to set up the following environment variables in Netlify:
+After deployment, you **must** set up the following environment variables in Netlify for the application to work properly:
 
 1. Go to your Netlify site dashboard
 2. Navigate to Site settings > Build & deploy > Environment
 3. Add the following environment variables:
-   - `DATABASE_URL`: Your PostgreSQL database connection string
+   - `DATABASE_URL`: Your PostgreSQL database connection string (format: `postgresql://username:password@hostname:port/database`)
+
+### Database Connection Options
+
+You have several options for providing a database for your deployed application:
+
+1. **Use Neon (Recommended)**: 
+   - Sign up for a free account at [Neon.tech](https://neon.tech)
+   - Create a PostgreSQL database
+   - Get the connection string that includes pooling for serverless environments
+
+2. **Use Supabase**:
+   - Create a free Supabase project
+   - Get the PostgreSQL connection string from the database settings
+
+3. **Use any PostgreSQL provider** that offers a connection string compatible with the application
 
 ## Testing Your Deployment
 
