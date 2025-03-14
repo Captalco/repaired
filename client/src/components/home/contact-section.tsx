@@ -54,9 +54,9 @@ export default function ContactSection() {
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row">
             <MotionDiv className="w-full md:w-1/2 mb-10 md:mb-0 pr-0 md:pr-10">
-              <Badge className="mb-4 bg-primary/10 text-primary hover:bg-primary/20 px-3 py-1">Contact Us</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Let's Start a Conversation</h2>
-              <p className="text-muted-foreground mb-8">Have questions about how repaired.co can help your team? We're here to help you find the perfect solution for your needs.</p>
+              <Badge className="mb-4 bg-primary/20 text-primary hover:bg-primary/30 px-3 py-1 font-bold">Contact Us</Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">Let's Start a Conversation</h2>
+              <p className="text-foreground mb-8">Have questions about how repaired.co can help your team? We're here to help you find the perfect solution for your needs.</p>
               
               <div className="space-y-6">
                 <div className="flex items-start">
@@ -64,8 +64,8 @@ export default function ContactSection() {
                     <MapPin className="text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-bold mb-1">Location</h4>
-                    <p className="text-muted-foreground">123 Innovation Drive, Suite 400<br />San Francisco, CA 94103</p>
+                    <h4 className="font-bold mb-1 text-foreground">Location</h4>
+                    <p className="text-foreground">123 Innovation Drive, Suite 400<br />San Francisco, CA 94103</p>
                   </div>
                 </div>
                 
@@ -74,8 +74,8 @@ export default function ContactSection() {
                     <Mail className="text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-bold mb-1">Email</h4>
-                    <p className="text-muted-foreground">info@repaired.co<br />support@repaired.co</p>
+                    <h4 className="font-bold mb-1 text-foreground">Email</h4>
+                    <p className="text-foreground">info@repaired.co<br />support@repaired.co</p>
                   </div>
                 </div>
                 
@@ -84,8 +84,8 @@ export default function ContactSection() {
                     <Phone className="text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-bold mb-1">Phone</h4>
-                    <p className="text-muted-foreground">(555) 123-4567<br />Mon-Fri, 8am-6pm PT</p>
+                    <h4 className="font-bold mb-1 text-foreground">Phone</h4>
+                    <p className="text-foreground">(555) 123-4567<br />Mon-Fri, 8am-6pm PT</p>
                   </div>
                 </div>
               </div>
@@ -93,7 +93,7 @@ export default function ContactSection() {
             
             <MotionDiv delay={0.2} className="w-full md:w-1/2">
               <div className="bg-card p-8 rounded-xl">
-                <h3 className="text-xl font-bold mb-6">Send us a message</h3>
+                <h3 className="text-xl font-bold mb-6 text-foreground">Send us a message</h3>
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                     <FormField
@@ -101,7 +101,7 @@ export default function ContactSection() {
                       name="name"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-sm font-medium text-muted-foreground">Name</FormLabel>
+                          <FormLabel className="text-sm font-medium text-foreground">Name</FormLabel>
                           <FormControl>
                             <Input 
                               placeholder="Your name" 
@@ -119,7 +119,7 @@ export default function ContactSection() {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-sm font-medium text-muted-foreground">Email</FormLabel>
+                          <FormLabel className="text-sm font-medium text-foreground">Email</FormLabel>
                           <FormControl>
                             <Input 
                               placeholder="your.email@example.com" 
@@ -137,7 +137,7 @@ export default function ContactSection() {
                       name="company"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-sm font-medium text-muted-foreground">Company</FormLabel>
+                          <FormLabel className="text-sm font-medium text-foreground">Company</FormLabel>
                           <FormControl>
                             <Input 
                               placeholder="Your company" 
@@ -155,7 +155,7 @@ export default function ContactSection() {
                       name="message"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-sm font-medium text-muted-foreground">Message</FormLabel>
+                          <FormLabel className="text-sm font-medium text-foreground">Message</FormLabel>
                           <FormControl>
                             <Textarea 
                               placeholder="How can we help you?" 
