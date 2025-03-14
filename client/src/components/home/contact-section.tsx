@@ -186,7 +186,7 @@ export default function ContactSection() {
 function Badge({ children, className, ...props }: React.ButtonHTMLAttributes<HTMLSpanElement>) {
   return (
     <span
-      className={`inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium ${className}`}
+      className={`inline-block px-3 py-1 bg-primary/20 text-primary hover:bg-primary/30 rounded-full text-sm font-bold ${className}`}
       {...props}
     >
       {children}

@@ -111,7 +111,7 @@ export default function Auth() {
                 <form onSubmit={loginForm.handleSubmit(onLoginSubmit)}>
                   <div className="space-y-4">
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium mb-1">
+                      <label htmlFor="email" className="block text-sm font-bold text-foreground mb-1">
                         Email
                       </label>
                       <input
@@ -130,7 +130,7 @@ export default function Auth() {
                     </div>
                     
                     <div>
-                      <label htmlFor="password" className="block text-sm font-medium mb-1">
+                      <label htmlFor="password" className="block text-sm font-bold text-foreground mb-1">
                         Password
                       </label>
                       <input
@@ -155,7 +155,7 @@ export default function Auth() {
                           id="remember"
                           className="h-4 w-4 rounded border-gray-300"
                         />
-                        <label htmlFor="remember" className="ml-2 block text-sm text-muted-foreground">
+                        <label htmlFor="remember" className="ml-2 block text-sm text-foreground">
                           Remember me
                         </label>
                       </div>
@@ -186,7 +186,7 @@ export default function Auth() {
                 <form onSubmit={registerForm.handleSubmit(onRegisterSubmit)}>
                   <div className="space-y-4">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium mb-1">
+                      <label htmlFor="name" className="block text-sm font-bold text-foreground mb-1">
                         Full Name
                       </label>
                       <input
@@ -205,7 +205,7 @@ export default function Auth() {
                     </div>
                     
                     <div>
-                      <label htmlFor="register-email" className="block text-sm font-medium mb-1">
+                      <label htmlFor="register-email" className="block text-sm font-bold text-foreground mb-1">
                         Email
                       </label>
                       <input
@@ -224,7 +224,7 @@ export default function Auth() {
                     </div>
                     
                     <div>
-                      <label htmlFor="register-password" className="block text-sm font-medium mb-1">
+                      <label htmlFor="register-password" className="block text-sm font-bold text-foreground mb-1">
                         Password
                       </label>
                       <input
@@ -243,7 +243,7 @@ export default function Auth() {
                     </div>
                     
                     <div>
-                      <label htmlFor="confirm-password" className="block text-sm font-medium mb-1">
+                      <label htmlFor="confirm-password" className="block text-sm font-bold text-foreground mb-1">
                         Confirm Password
                       </label>
                       <input
