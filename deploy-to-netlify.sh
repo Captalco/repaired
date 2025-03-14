@@ -11,21 +11,30 @@ if ! command -v netlify &> /dev/null; then
     npm install -g netlify-cli
 fi
 
-# Login to Netlify (if not already logged in)
-echo "🔑 Please login to your Netlify account..."
-netlify login
+# Check if NETLIFY_AUTH_TOKEN is set
+if [ -z "$NETLIFY_AUTH_TOKEN" ]; then
+    echo "⚠️ NETLIFY_AUTH_TOKEN environment variable is not set."
+    echo "Please set it by running: export NETLIFY_AUTH_TOKEN=your_personal_access_token"
+    echo "You can create a personal access token at: https://app.netlify.com/user/applications#personal-access-tokens"
+    exit 1
+fi
 
-# Initialize Netlify site if not already initialized
+# Use the token for non-interactive authentication
+echo "🔑 Authenticating with Netlify using token..."
+netlify login --auth $NETLIFY_AUTH_TOKEN
+
+# Initialize Netlify site if not already initialized (non-interactive)
 if [ ! -f ".netlify/state.json" ]; then
-    echo "🏗️ Initializing Netlify site..."
-    netlify init
+    echo "🏗️ Creating new Netlify site..."
+    # Create a new site with auto-generated name
+    netlify sites:create --name electric-motor-logos-$(date +%s) --with-ci
 else
     echo "✅ Netlify site already initialized"
 fi
 
-# Deploy to Netlify
+# Deploy to Netlify (non-interactive)
 echo "🚀 Deploying to Netlify..."
-netlify deploy --build
+netlify deploy --build --prod
 
 echo "✨ Deployment process completed! Check the URLs above for your site."
 echo "⚠️ Note: Make sure to set up DATABASE_URL in Netlify environment variables"
