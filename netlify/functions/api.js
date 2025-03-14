@@ -4,16 +4,50 @@ const { Pool } = require('pg');
 const { drizzle } = require('drizzle-orm/node-postgres');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
+
+// Define paths to look for schema
+const possiblePaths = [
+  path.join(__dirname, '../../dist/shared/schema.js'),
+  path.join(__dirname, '../dist/shared/schema.js'),
+  path.join(__dirname, '/dist/shared/schema.js'),
+  path.join(__dirname, '../shared/schema.js'),
+  path.join(__dirname, 'dist/shared/schema.js'),
+  path.join(__dirname, 'shared/schema.js')
+];
 
 // Import schema - handle ES Module schema with dynamic import fallback
 let schema = {};
-try {
-  // Attempt to load schema as CommonJS from dist
-  const schemaModule = require('../../dist/shared/schema.js');
-  schema = schemaModule.default || schemaModule;
-  console.log('Successfully loaded schema from dist directory');
-} catch (e) {
-  console.warn('Failed to import schema from dist, falling back to manually defined schema:', e.message);
+let schemaPath = null;
+
+// First check which paths exist
+for (const checkPath of possiblePaths) {
+  try {
+    if (fs.existsSync(checkPath)) {
+      schemaPath = checkPath;
+      console.log('Found schema file at:', checkPath);
+      break;
+    }
+  } catch (e) {
+    // Continue checking other paths
+  }
+}
+
+// Try to load the schema if we found a path
+if (schemaPath) {
+  try {
+    const schemaModule = require(schemaPath);
+    schema = schemaModule.default || schemaModule;
+    console.log('Successfully loaded schema');
+  } catch (e) {
+    console.warn('Found schema file but failed to import it:', e.message);
+    schemaPath = null; // Reset so we fall back to manual schema
+  }
+}
+
+// Fall back to manual schema if needed
+if (!schemaPath) {
+  console.warn('Using manually defined schema');
   
   // Define schema manually for Netlify function to avoid ESM/CommonJS conflicts
   const { pgTable, text, serial, integer, boolean } = require('drizzle-orm/pg-core');
