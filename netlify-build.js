@@ -1,5 +1,5 @@
 // Netlify build script to prepare the project for deployment
-const { execSync } = require('child_process');
+import { execSync } from 'child_process';
 
 try {
   console.log('🏗️ Starting Netlify build process...');

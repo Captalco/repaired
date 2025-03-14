@@ -1,7 +1,10 @@
 [build]
-  command = "node netlify-build.js"
+  command = "node --experimental-modules netlify-build.js"
   publish = "dist"
   functions = "dist/netlify/functions"
+  
+[build.environment]
+  NODE_VERSION = "18"
 
 [dev]
   command = "npm run dev"

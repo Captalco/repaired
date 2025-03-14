@@ -1,20 +1,24 @@
-const express = require('express');
-const serverless = require('serverless-http');
-const { Pool } = require('pg');
-const { drizzle } = require('drizzle-orm/node-postgres');
-const cors = require('cors');
+import express from 'express';
+import serverless from 'serverless-http';
+import pg from 'pg';
+import { drizzle } from 'drizzle-orm/node-postgres';
+import cors from 'cors';
+
+const { Pool } = pg;
 
 // Import schema - handle both ESM and CommonJS
-let schema;
+let schema = {};
 try {
-  schema = require('../../dist/shared/schema.js');
+  // Dynamic import for ES modules
+  const schemaModule = await import('../../dist/shared/schema.js');
+  schema = schemaModule.default || schemaModule;
 } catch (e) {
   console.warn('Failed to import schema from dist, falling back to source:', e.message);
   try {
-    schema = require('../../shared/schema.js');
+    const schemaModule = await import('../../shared/schema.js');
+    schema = schemaModule.default || schemaModule;
   } catch (e) {
     console.error('Failed to import schema:', e.message);
-    schema = {}; // Fallback empty schema
   }
 }
 
@@ -74,4 +78,4 @@ app.use((err, req, res, next) => {
 });
 
 // Export the serverless handler
-module.exports.handler = serverless(app);
+export const handler = serverless(app);
