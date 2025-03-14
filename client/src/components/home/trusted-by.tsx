@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
 import { CompanyLogo } from "@shared/schema";
+import { useTheme } from "@/contexts/theme-context";
 
 export default function TrustedBy() {
   const [logos, setLogos] = useState<CompanyLogo[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const fetchLogos = async () => {
@@ -84,9 +86,9 @@ export default function TrustedBy() {
             {displayLogos.map((logo) => (
               <div key={logo.id} className="flex-shrink-0 h-16 w-36 flex items-center justify-center">
                 <img 
-                  src={logo.imageUrl} 
+                  src={theme === 'dark' && logo.darkModeUrl ? logo.darkModeUrl : logo.imageUrl} 
                   alt={logo.altText || `${logo.name} logo`} 
-                  className="h-full w-auto object-contain filter invert opacity-80 dark:invert-0 dark:opacity-90" 
+                  className="h-full w-auto object-contain" 
                 />
               </div>
             ))}

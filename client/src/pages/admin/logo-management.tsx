@@ -36,6 +36,7 @@ export default function LogoManagement() {
     defaultValues: {
       name: "",
       imageUrl: "",
+      darkModeUrl: "",
       altText: "",
       displayOrder: 1,
       isActive: true,
@@ -48,6 +49,7 @@ export default function LogoManagement() {
     defaultValues: {
       name: "",
       imageUrl: "",
+      darkModeUrl: "",
       altText: "",
       displayOrder: 1,
       isActive: true,
@@ -189,6 +191,7 @@ export default function LogoManagement() {
     editForm.reset({
       name: logo.name,
       imageUrl: logo.imageUrl,
+      darkModeUrl: logo.darkModeUrl || "",
       altText: logo.altText || "",
       displayOrder: logo.displayOrder,
       isActive: logo.isActive,
@@ -248,9 +251,22 @@ export default function LogoManagement() {
                   name="imageUrl"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Image URL</FormLabel>
+                      <FormLabel>Light Mode Image URL</FormLabel>
                       <FormControl>
                         <Input placeholder="/images/logos/company.png" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={addForm.control}
+                  name="darkModeUrl"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Dark Mode Image URL</FormLabel>
+                      <FormControl>
+                        <Input placeholder="/images/logos/company-dark.png" {...field} value={field.value || ""} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -412,9 +428,22 @@ export default function LogoManagement() {
                 name="imageUrl"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Image URL</FormLabel>
+                    <FormLabel>Light Mode Image URL</FormLabel>
                     <FormControl>
                       <Input placeholder="/images/logos/company.png" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={editForm.control}
+                name="darkModeUrl"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Dark Mode Image URL</FormLabel>
+                    <FormControl>
+                      <Input placeholder="/images/logos/company-dark.png" {...field} value={field.value || ""} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
