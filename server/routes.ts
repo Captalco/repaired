@@ -173,12 +173,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Serve static logo files for uploaded logos
-  const staticDir = path.join(__dirname, '../public/uploads');
-  if (!fs.existsSync(staticDir)) {
-    fs.mkdirSync(staticDir, { recursive: true });
+  // Serve static logo files and images
+  const uploadsDir = path.join(__dirname, '../public/uploads');
+  if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
   }
   app.use('/api/uploads', express.static(path.join(__dirname, '../public/uploads')));
+  
+  // Serve static files from the public directory
+  app.use('/images', express.static(path.join(__dirname, '../public/images')));
 
   const httpServer = createServer(app);
 
