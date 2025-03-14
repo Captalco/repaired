@@ -109,7 +109,8 @@ export default function Header() {
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center">
           <Link href="/" className="flex items-center space-x-2">
-            <div className={`w-7 h-7 rounded-full flex items-center justify-center overflow-hidden relative ${theme === 'dark' ? 'bg-white' : 'gold-effect'}`}>
+            <div className={`w-7 h-7 rounded-full flex items-center justify-center overflow-hidden relative ${theme === 'dark' ? 'bg-white' : 'bg-background border border-foreground/20'}`}>
+              <div className={`w-3 h-3 rounded-full ${theme === 'dark' ? 'bg-accent' : 'bg-foreground'}`}></div>
             </div>
             <span className="text-xl font-bold font-sans text-foreground">
               repaired.co
