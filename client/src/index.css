@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Add dark mode class to the document on page load if needed */
+.dark {
+  color-scheme: dark;
+}
+
 @layer base {
   :root {
     /* Light mode */

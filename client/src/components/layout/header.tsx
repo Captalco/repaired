@@ -13,7 +13,7 @@ import {
   SunIcon,
   MoonIcon
 } from "@radix-ui/react-icons";
-import { useTheme } from "../../App"; // Import the theme context
+import { useTheme } from "../../App";
 
 // Simple utility function to combine class names
 const cn = (...classes: (string | boolean | undefined)[]) => 
