@@ -181,4 +181,27 @@
   .theme-transition {
     transition: all 0.3s ease;
   }
+  
+  /* Form input with neumorphic inset style */
+  .neu-input-inset {
+    @apply relative px-3 py-2 border-0;
+    box-shadow: 
+      inset var(--neu-depth) var(--neu-depth) var(--neu-blur) hsl(var(--neu-shadow-from) / var(--neu-opacity-from)),
+      inset calc(var(--neu-depth) * -1) calc(var(--neu-depth) * -1) var(--neu-blur) hsl(var(--neu-shadow-to) / var(--neu-opacity-to));
+  }
+  
+  /* Social login buttons */
+  .neu-social-button {
+    @apply bg-card relative transition-all duration-200 hover:bg-primary;
+    box-shadow: 
+      var(--neu-depth) var(--neu-depth) var(--neu-blur) hsl(var(--neu-shadow-from) / var(--neu-opacity-from)),
+      calc(var(--neu-depth) * -1) calc(var(--neu-depth) * -1) var(--neu-blur) hsl(var(--neu-shadow-to) / var(--neu-opacity-to));
+  }
+  
+  .neu-social-button:active {
+    @apply translate-y-0.5;
+    box-shadow: 
+      inset var(--neu-depth) var(--neu-depth) var(--neu-blur) hsl(var(--neu-shadow-from) / var(--neu-opacity-from)),
+      inset calc(var(--neu-depth) * -1) calc(var(--neu-depth) * -1) var(--neu-blur) hsl(var(--neu-shadow-to) / var(--neu-opacity-to));
+  }
 }
