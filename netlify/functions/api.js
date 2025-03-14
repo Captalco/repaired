@@ -3,7 +3,20 @@ const serverless = require('serverless-http');
 const { Pool } = require('pg');
 const { drizzle } = require('drizzle-orm/node-postgres');
 const cors = require('cors');
-const schema = require('../../shared/schema');
+
+// Import schema - handle both ESM and CommonJS
+let schema;
+try {
+  schema = require('../../dist/shared/schema.js');
+} catch (e) {
+  console.warn('Failed to import schema from dist, falling back to source:', e.message);
+  try {
+    schema = require('../../shared/schema.js');
+  } catch (e) {
+    console.error('Failed to import schema:', e.message);
+    schema = {}; // Fallback empty schema
+  }
+}
 
 // Initialize express app
 const app = express();

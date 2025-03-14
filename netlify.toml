@@ -1,7 +1,7 @@
 [build]
-  command = "npm run build"
+  command = "node netlify-build.js"
   publish = "dist"
-  functions = "netlify/functions"
+  functions = "dist/netlify/functions"
 
 [dev]
   command = "npm run dev"
