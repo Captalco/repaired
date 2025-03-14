@@ -28,6 +28,7 @@ function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   // Function to toggle theme
   const toggleTheme = () => {
+    // Determine the new theme (if currently dark, switch to light, and vice versa)
     const newTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
     

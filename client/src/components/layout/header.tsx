@@ -156,11 +156,11 @@ export default function Header() {
             >
               {theme === 'dark' ? (
                 <span className="gold-effect w-7 h-7 flex items-center justify-center rounded-full">
-                  <SunIcon className="w-4 h-4 text-background" />
+                  <SunIcon className="w-4 h-4 text-white" />
                 </span>
               ) : (
                 <span className="silver-effect w-7 h-7 flex items-center justify-center rounded-full">
-                  <MoonIcon className="w-4 h-4 text-background" />
+                  <MoonIcon className="w-4 h-4 text-gray-800" />
                 </span>
               )}
             </button>
@@ -190,11 +190,11 @@ export default function Header() {
             >
               {theme === 'dark' ? (
                 <span className="gold-effect w-7 h-7 flex items-center justify-center rounded-full">
-                  <SunIcon className="w-4 h-4 text-background" />
+                  <SunIcon className="w-4 h-4 text-white" />
                 </span>
               ) : (
                 <span className="silver-effect w-7 h-7 flex items-center justify-center rounded-full">
-                  <MoonIcon className="w-4 h-4 text-background" />
+                  <MoonIcon className="w-4 h-4 text-gray-800" />
                 </span>
               )}
             </button>
