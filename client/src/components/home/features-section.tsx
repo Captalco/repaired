@@ -4,7 +4,7 @@ import { MotionDiv } from "@/components/ui/motion-div";
 // Custom badge component with neumorphic styling
 const Badge = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => {
   return (
-    <span className={`gold-effect px-3 py-1 rounded-xl text-background font-medium ${className}`}>
+    <span className={`gold-effect px-3 py-1 rounded-xl text-background font-bold ${className}`}>
       {children}
     </span>
   );
@@ -15,7 +15,7 @@ export default function FeaturesSection() {
     <section id="features" className="py-20">
       <div className="container mx-auto px-4 sm:px-6">
         <MotionDiv className="text-center max-w-3xl mx-auto mb-16 neu-card p-8 rounded-xl">
-          <Badge className="mb-4">Features</Badge>
+          <Badge className="mb-4 font-bold">Features</Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">Re-Manufacturing Requires Different Tools</h2>
           <p className="text-lg text-foreground">Unlike generic manufacturing solutions, our AI-powered platform is built specifically for re-manufacturing workflows, with computer vision technology that understands core restoration processes.</p>
         </MotionDiv>
