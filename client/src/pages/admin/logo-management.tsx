@@ -263,7 +263,7 @@ export default function LogoManagement() {
                     <FormItem>
                       <FormLabel>Alt Text</FormLabel>
                       <FormControl>
-                        <Input placeholder="Company logo" {...field} />
+                        <Input placeholder="Company logo" {...field} value={field.value || ""} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -292,7 +292,7 @@ export default function LogoManagement() {
                       </div>
                       <FormControl>
                         <Switch
-                          checked={field.value}
+                          checked={field.value ?? false}
                           onCheckedChange={field.onChange}
                         />
                       </FormControl>
@@ -427,7 +427,7 @@ export default function LogoManagement() {
                   <FormItem>
                     <FormLabel>Alt Text</FormLabel>
                     <FormControl>
-                      <Input placeholder="Company logo" {...field} />
+                      <Input placeholder="Company logo" {...field} value={field.value || ""} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
