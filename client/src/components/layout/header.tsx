@@ -187,7 +187,10 @@ export default function Header() {
           {/* Mobile menu button */}
           <div className="lg:hidden flex items-center space-x-2">
             <button 
-              onClick={toggleTheme} 
+              onClick={() => {
+                console.log("Mobile theme toggle clicked, current theme:", theme);
+                toggleTheme();
+              }} 
               className="neu-button p-2 rounded-full flex items-center justify-center"
               aria-label="Toggle theme"
             >
