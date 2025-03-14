@@ -50,26 +50,24 @@ function ThemeProvider({ children }: { children: React.ReactNode }) {
     // First, ensure any existing class is removed
     document.documentElement.classList.remove('dark');
     
+    // By default, always use dark mode
+    const defaultTheme: Theme = 'dark';
     const savedTheme = localStorage.getItem('theme') as Theme | null;
     
-    // If user has saved theme preference
+    // If user has saved theme preference, use that
     if (savedTheme) {
       setTheme(savedTheme);
       if (savedTheme === 'dark') {
         document.documentElement.classList.add('dark');
       }
     }
-    // If no saved preference, check system preference
+    // Otherwise use default (dark)
     else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setTheme(prefersDark ? 'dark' : 'light');
-      
-      if (prefersDark) {
-        document.documentElement.classList.add('dark');
-      }
+      setTheme(defaultTheme);
+      document.documentElement.classList.add('dark');
     }
     
-    console.log("Theme initialized to:", savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+    console.log("Theme initialized to:", savedTheme || defaultTheme);
   }, []);
 
   return (
