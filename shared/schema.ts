@@ -12,6 +12,7 @@ export const companyLogos = pgTable("company_logos", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   imageUrl: text("image_url").notNull(),
+  darkModeUrl: text("dark_mode_url"),
   altText: text("alt_text"),
   displayOrder: integer("display_order").notNull(),
   isActive: boolean("is_active").default(true),
@@ -25,6 +26,7 @@ export const insertUserSchema = createInsertSchema(users).pick({
 export const insertLogoSchema = createInsertSchema(companyLogos).pick({
   name: true,
   imageUrl: true,
+  darkModeUrl: true,
   altText: true,
   displayOrder: true,
   isActive: true,
