@@ -1,63 +1,70 @@
 # Exporting Your Replit Project to GitHub
 
-## Method 1: Using Git Commands Directly
+## Method 1: Using the Included Script (Recommended)
 
-1. Create a new repository on GitHub at https://github.com/new
-   - Give it a name (e.g., "electric-motor-logos")
-   - Add a description (optional)
-   - Choose public or private
-   - Click "Create repository"
+The simplest way to push your code to GitHub is using our custom script:
 
-2. Copy the repository URL from GitHub (it will look like `https://github.com/yourusername/electric-motor-logos.git`)
+1. First, create a personal access token on GitHub:
+   - Go to GitHub → Settings → Developer settings → Personal access tokens → Generate new token (classic)
+   - Note: Select "classic" token
+   - Give it a name (e.g., "Replit Export")
+   - Set an expiration date
+   - Select at least the "repo" scope
+   - Click "Generate token" and copy the token
 
-3. Run these commands in your Replit shell, replacing `YOUR_GITHUB_REPO_URL` with your actual repository URL:
+2. Run the push script with your GitHub username and token:
    ```bash
-   git remote add origin YOUR_GITHUB_REPO_URL
-   git branch -M main
-   git push -u origin main
+   ./push-to-github.sh YOUR_GITHUB_USERNAME YOUR_PERSONAL_ACCESS_TOKEN
    ```
 
-4. When prompted, enter your GitHub username and personal access token (not your regular password)
+3. Check your GitHub repository at `https://github.com/YOUR_USERNAME/repaired`
 
-   To create a personal access token:
-   - Go to GitHub → Settings → Developer settings → Personal access tokens → Generate new token
-   - Give it a name, set an expiration, and select the "repo" scope
-   - Generate and copy the token to use as your password
+## Method 2: Using Replit's GitHub Integration
 
-## Method 2: Using GitHub Import Feature
+If you prefer to use Replit's built-in integration:
 
-If you're having trouble with Git commands in Replit, you can also:
+1. Click on the version control icon in the left sidebar (Git icon)
+2. Click "Connect to GitHub"
+3. If prompted, authorize Replit
+4. Select your existing repository (`repaired`)
+5. Follow the prompts to commit and push
+
+## Method 3: Using GitHub Import Feature
+
+If you're still having trouble, you can export and import manually:
 
 1. Download your Replit code as a ZIP file:
    - Click on the three dots (...) in the Replit file explorer
    - Select "Download as zip"
 
-2. Go to https://github.com/new/import
-   - Select "Import repository"
-   - In "Your old repository's clone URL", enter a placeholder URL
-   - Name your repository
-   - Choose public or private
-   - Click "Begin import"
-
-3. After the import is initialized, go to your new GitHub repository
-   - Click "Upload files"
+2. Go to https://github.com/Captalco/repaired (your existing repo)
+   - Click "Add file" → "Upload files"
    - Drag and drop the ZIP contents or select them from your computer
    - Add a commit message
    - Click "Commit changes"
 
-## Method 3: Using Replit's GitHub Integration
+## Troubleshooting GitHub Push Issues in Replit
 
-Replit also has built-in GitHub integration:
+If you're experiencing timeout issues:
 
-1. In your Replit project, click on the version control icon in the left sidebar
-2. Click "Connect to GitHub"
-3. Follow the prompts to authorize Replit and select or create your repository
-4. Commit and push your changes through the Replit interface
+1. **Use HTTPS with Token in URL**:
+   ```bash
+   git remote set-url origin https://YOUR_USERNAME:YOUR_TOKEN@github.com/Captalco/repaired.git
+   git push -u origin main
+   ```
+
+2. **Reduce Repository Size**:
+   - Add large files to .gitignore
+   - Consider using Git LFS for large files
+   
+3. **Split Your Push**:
+   - Push in smaller commits
+   - Try pushing one folder at a time
 
 ## After Connecting to GitHub
 
 Once your code is on GitHub, you can:
 - Set up GitHub Actions for continuous integration
-- Connect Netlify for continuous deployment
+- Connect Netlify for continuous deployment (see NETLIFY_DEPLOYMENT.md)
 - Share the repository with collaborators
 - Make changes, commit, and push using standard Git workflows
