@@ -165,7 +165,12 @@ export default function Header() {
               )}
             </button>
             
-            <Button variant="outline" className="text-muted-foreground hover:text-foreground" size="sm">
+            <Button 
+              onClick={() => setLocation("/auth")}
+              variant="outline" 
+              className="text-muted-foreground hover:text-foreground" 
+              size="sm"
+            >
               <EnterIcon className="w-4 h-4 mr-1.5" />
               Login
             </Button>
@@ -240,7 +245,15 @@ export default function Header() {
                 <span>Contact</span>
               </button>
               <div className="pt-2 grid grid-cols-2 gap-2">
-                <Button variant="outline" className="w-full text-foreground" size="sm">
+                <Button 
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    setLocation("/auth");
+                  }}
+                  variant="outline" 
+                  className="w-full text-foreground" 
+                  size="sm"
+                >
                   <EnterIcon className="w-4 h-4 mr-1.5" />
                   Login
                 </Button>
