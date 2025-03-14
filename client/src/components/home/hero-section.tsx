@@ -178,7 +178,7 @@ export default function HeroSection() {
               </div>
               
               {/* Notification popup with neumorphic styling */}
-              <div className="absolute -bottom-6 -right-6 neu-card p-4 rounded-xl shadow-lg">
+              <div className="absolute -bottom-6 -right-6 neu-card p-4 rounded-xl shadow-lg z-20">
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 gold-effect rounded-full flex items-center justify-center">
                     <Check className="text-background" size={18} />
