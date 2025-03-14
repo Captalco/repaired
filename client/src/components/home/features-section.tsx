@@ -16,8 +16,8 @@ export default function FeaturesSection() {
       <div className="container mx-auto px-4 sm:px-6">
         <MotionDiv className="text-center max-w-3xl mx-auto mb-16 neu-card p-8 rounded-xl">
           <Badge className="mb-4">Features</Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Re-Manufacturing Requires Different Tools</h2>
-          <p className="text-lg text-muted-foreground">Unlike generic manufacturing solutions, our AI-powered platform is built specifically for re-manufacturing workflows, with computer vision technology that understands core restoration processes.</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">Re-Manufacturing Requires Different Tools</h2>
+          <p className="text-lg text-foreground">Unlike generic manufacturing solutions, our AI-powered platform is built specifically for re-manufacturing workflows, with computer vision technology that understands core restoration processes.</p>
         </MotionDiv>
         
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 mb-20">
@@ -55,7 +55,7 @@ export default function FeaturesSection() {
             <div className="neu-card p-6 rounded-xl">
               <span className="gold-effect px-2 py-1 rounded font-medium inline-block mb-2">Computer Vision Technology</span>
               <h3 className="text-2xl md:text-3xl font-bold mb-4">Automated Core Analysis & Inspection</h3>
-              <p className="text-muted-foreground mb-6">Our advanced computer vision system can detect defects, measure wear, and assess restoration potential with unprecedented accuracy - far beyond what traditional manufacturing software can provide.</p>
+              <p className="text-foreground mb-6">Our advanced computer vision system can detect defects, measure wear, and assess restoration potential with unprecedented accuracy - far beyond what traditional manufacturing software can provide.</p>
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <span className="gold-effect w-6 h-6 flex items-center justify-center rounded-full mr-3">

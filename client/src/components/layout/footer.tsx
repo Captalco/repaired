@@ -1,21 +1,21 @@
 import { Link } from "wouter";
 import { Settings, Cog, LucideTwitter, Linkedin, Facebook, Instagram } from "lucide-react";
 import { LightningBoltIcon } from "@radix-ui/react-icons";
+import { useTheme } from "../../contexts/theme-context";
 
 export default function Footer() {
+  const { theme } = useTheme();
   return (
     <footer className="neu-card-inset px-6 py-12 mt-16">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div>
             <Link href="/" className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 rounded-full gold-effect flex items-center justify-center overflow-hidden relative">
-                <div className="w-5 h-5 rounded-full bg-background flex items-center justify-center">
-                  <LightningBoltIcon className="w-3 h-3 text-foreground" />
-                </div>
+              <div className={`w-10 h-10 rounded-full flex items-center justify-center overflow-hidden relative ${theme === 'dark' ? 'bg-white' : 'bg-background border border-foreground/20'}`}>
+                <div className={`w-5 h-5 rounded-full ${theme === 'dark' ? 'bg-accent' : 'bg-foreground'}`}></div>
               </div>
               <span className="text-xl font-bold font-sans text-foreground">
-                repaired<span className="silver-effect px-1 py-0.5 rounded text-background">.co</span>
+                repaired.co
               </span>
             </Link>
             <p className="text-muted-foreground mb-6">
