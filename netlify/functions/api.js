@@ -5,17 +5,36 @@ const { drizzle } = require('drizzle-orm/node-postgres');
 const cors = require('cors');
 const path = require('path');
 
-// Import schema - handle both ESM and CommonJS
+// Import schema - handle ES Module schema with dynamic import fallback
 let schema = {};
 try {
-  schema = require('../../dist/shared/schema.js');
+  // Attempt to load schema as CommonJS from dist
+  const schemaModule = require('../../dist/shared/schema.js');
+  schema = schemaModule.default || schemaModule;
+  console.log('Successfully loaded schema from dist directory');
 } catch (e) {
-  console.warn('Failed to import schema from dist, falling back to source:', e.message);
-  try {
-    schema = require('../../shared/schema.js');
-  } catch (e) {
-    console.error('Failed to import schema:', e.message);
-  }
+  console.warn('Failed to import schema from dist, falling back to manually defined schema:', e.message);
+  
+  // Define schema manually for Netlify function to avoid ESM/CommonJS conflicts
+  const { pgTable, text, serial, integer, boolean } = require('drizzle-orm/pg-core');
+  
+  schema = {
+    users: pgTable("users", {
+      id: serial("id").primaryKey(),
+      username: text("username").notNull().unique(),
+      password: text("password").notNull(),
+    }),
+    
+    companyLogos: pgTable("company_logos", {
+      id: serial("id").primaryKey(),
+      name: text("name").notNull(),
+      imageUrl: text("image_url").notNull(),
+      darkModeUrl: text("dark_mode_url"),
+      altText: text("alt_text"),
+      displayOrder: integer("display_order").notNull(),
+      isActive: boolean("is_active").default(true),
+    })
+  };
 }
 
 // Initialize express app
@@ -38,7 +57,7 @@ app.get('/api/logos/active', async (req, res) => {
       return res.status(500).json({ error: 'Database connection not available' });
     }
     const logos = await db.query.companyLogos.findMany({
-      where: (logos, { eq }) => eq(logos.active, true)
+      where: (logos, { eq }) => eq(logos.isActive, true)
     });
     res.json({ logos });
   } catch (error) {

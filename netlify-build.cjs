@@ -17,6 +17,10 @@ try {
   execSync('mkdir -p dist/netlify/functions', { stdio: 'inherit' });
   execSync('cp -r netlify/functions/* dist/netlify/functions/', { stdio: 'inherit' });
   
+  // Install dependencies in the functions directory
+  console.log('📦 Installing function dependencies...');
+  execSync('cd dist/netlify/functions && npm install --no-package-lock', { stdio: 'inherit' });
+  
   console.log('✅ Build completed successfully!');
 } catch (error) {
   console.error('❌ Build failed:', error);
