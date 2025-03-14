@@ -96,7 +96,7 @@ export default function Auth() {
                 {mode === "login" ? "Welcome Back" : "Create an Account"}
               </motion.h1>
               <motion.p 
-                className="text-muted-foreground"
+                className="text-foreground"
                 variants={slideUp}
               >
                 {mode === "login" 
@@ -281,7 +281,7 @@ export default function Auth() {
                 <div className="w-full border-t border-muted"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-card text-muted-foreground">
+                <span className="px-2 bg-card text-foreground">
                   Or continue with
                 </span>
               </div>
@@ -313,12 +313,12 @@ export default function Auth() {
 
             {/* Toggle between login and register */}
             <div className="text-center">
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground">
                 {mode === "login" ? "Don't have an account?" : "Already have an account?"}
                 <button
                   type="button"
                   onClick={() => setMode(mode === "login" ? "register" : "login")}
-                  className="ml-1 text-primary font-medium hover:underline"
+                  className="ml-1 text-primary font-bold hover:underline"
                 >
                   {mode === "login" ? "Sign up" : "Sign in"}
                 </button>
