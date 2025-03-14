@@ -37,10 +37,30 @@ else
     echo "✅ Netlify site already initialized"
 fi
 
-# Check if DATABASE_URL is set and warn if not
+# Check if DATABASE_URL is set
 if [ -z "$DATABASE_URL" ]; then
     echo "⚠️ Warning: DATABASE_URL environment variable is not set locally."
     echo "   Make sure to set it in Netlify's environment variables after deployment."
+else
+    # Verify database connection before proceeding
+    echo "🔍 Verifying database connection before deployment..."
+    node verify-db-connection.js
+    
+    if [ $? -ne 0 ]; then
+        echo "❌ Database connection verification failed."
+        echo "Would you like to continue with deployment anyway? (y/n)"
+        read -r continue_deploy
+        
+        if [[ ! $continue_deploy =~ ^[Yy]$ ]]; then
+            echo "Deployment canceled. Please fix database connection issues and try again."
+            exit 1
+        else
+            echo "Continuing with deployment despite database connection issues..."
+            echo "Remember to set up DATABASE_URL in Netlify environment variables after deployment."
+        fi
+    else
+        echo "✅ Database connection verified successfully!"
+    fi
 fi
 
 # Deploy to Netlify (non-interactive)
