@@ -1,5 +1,5 @@
 [build]
-  command = "node --experimental-modules netlify-build.js"
+  command = "chmod +x netlify-build.js && ./netlify-build.js"
   publish = "dist"
   functions = "dist/netlify/functions"
   
