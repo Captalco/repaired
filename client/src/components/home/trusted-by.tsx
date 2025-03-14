@@ -12,13 +12,19 @@ export default function TrustedBy() {
     { name: "toshiba", src: "/images/logos/toshiba.png" },
     { name: "weg", src: "/images/logos/weg.png" },
     { name: "worldwide", src: "/images/logos/worldwide.png" },
+    { name: "siemens", src: "/images/logos/siemens.png" },
+    { name: "marathon", src: "/images/logos/marathon.png" },
     // Duplicate logos for seamless scrolling
     { name: "baldor-2", src: "/images/logos/baldor.png" },
     { name: "lafert-2", src: "/images/logos/lafert.png" },
     { name: "nae-2", src: "/images/logos/nae.png" },
     { name: "nidec-2", src: "/images/logos/nidec.png" },
     { name: "teco-2", src: "/images/logos/teco.png" },
-    { name: "toshiba-2", src: "/images/logos/toshiba.png" }
+    { name: "toshiba-2", src: "/images/logos/toshiba.png" },
+    { name: "weg-2", src: "/images/logos/weg.png" },
+    { name: "worldwide-2", src: "/images/logos/worldwide.png" },
+    { name: "siemens-2", src: "/images/logos/siemens.png" },
+    { name: "marathon-2", src: "/images/logos/marathon.png" }
   ];
 
   return (
@@ -36,10 +42,10 @@ export default function TrustedBy() {
           {/* Continuous scrolling logos */}
           <motion.div 
             className="flex items-center gap-12 py-4"
-            animate={{ x: [0, -1800] }}
+            animate={{ x: [0, -2400] }}
             transition={{ 
               repeat: Infinity, 
-              duration: 30, 
+              duration: 25, 
               ease: "linear"
             }}
           >
@@ -48,7 +54,7 @@ export default function TrustedBy() {
                 <img 
                   src={logo.src} 
                   alt={`${logo.name} logo`} 
-                  className="h-full w-auto object-contain filter dark:invert-0 invert" 
+                  className="h-full w-auto object-contain filter invert opacity-80 dark:invert-0 dark:opacity-90" 
                 />
               </div>
             ))}
