@@ -69,17 +69,17 @@ export default function TrustedBy() {
           <div className="w-20 h-1 bg-teal-500 mx-auto"></div>
         </div>
         
-        <div className="relative w-full">
+        <div className="relative w-full overflow-hidden">
           {/* Gradient fade effect on the left side */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-card to-transparent"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-card via-card/80 to-transparent"></div>
           
           {/* Continuous scrolling logos */}
           <motion.div 
-            className="flex items-center gap-12 py-4"
+            className="flex items-center gap-16 py-4"
             animate={{ x: [0, -2400] }}
             transition={{ 
               repeat: Infinity, 
-              duration: 25, 
+              duration: 30, 
               ease: "linear"
             }}
           >
@@ -95,7 +95,7 @@ export default function TrustedBy() {
           </motion.div>
           
           {/* Gradient fade effect on the right side */}
-          <div className="absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-card to-transparent"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-card via-card/80 to-transparent"></div>
         </div>
       </div>
     </section>
