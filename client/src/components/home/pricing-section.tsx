@@ -76,13 +76,13 @@ export default function PricingSection() {
               )}
             >
               {plan.featured && (
-                <div className="inline-block px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-medium mb-4">Most Popular</div>
+                <div className="inline-block px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-medium mb-4 font-bold">Most Popular</div>
               )}
               <h3 className="text-xl font-bold mb-2">{plan.name}</h3>
-              <p className="text-muted-foreground mb-6">{plan.description}</p>
+              <p className="text-foreground mb-6">{plan.description}</p>
               <div className="mb-6">
                 <span className="text-4xl font-bold">{plan.price}</span>
-                <span className="text-muted-foreground">/month per user</span>
+                <span className="text-foreground">/month per user</span>
               </div>
               <ul className="space-y-3 mb-8">
                 {plan.features.map((feature, featureIndex) => (
@@ -103,7 +103,7 @@ export default function PricingSection() {
         </div>
         
         <MotionDiv delay={0.4} className="mt-12 text-center">
-          <p className="text-muted-foreground mb-4">Need a custom solution? We've got you covered.</p>
+          <p className="text-foreground mb-4">Need a custom solution? We've got you covered.</p>
           <a href="#" className="inline-flex items-center text-primary hover:underline">
             Contact our sales team <ArrowRight className="ml-1 h-4 w-4" />
           </a>

@@ -24,7 +24,7 @@ export default function TestimonialsSection() {
     <section className="py-20">
       <div className="container mx-auto px-4 sm:px-6">
         <MotionDiv className="text-center max-w-3xl mx-auto mb-16">
-          <Badge className="mb-4 bg-primary/10 text-primary hover:bg-primary/20 px-3 py-1">Testimonials</Badge>
+          <Badge className="mb-4 bg-primary/20 text-primary hover:bg-primary/30 px-3 py-1 font-bold">Testimonials</Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">What Our Customers Say</h2>
           <p className="text-lg text-foreground">Organizations of all sizes trust repaired.co to transform their field operations.</p>
         </MotionDiv>
