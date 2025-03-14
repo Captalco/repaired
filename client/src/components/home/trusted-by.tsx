@@ -86,7 +86,7 @@ export default function TrustedBy() {
             {displayLogos.map((logo) => (
               <div key={logo.id} className="flex-shrink-0 h-16 w-36 flex items-center justify-center">
                 <img 
-                  src={theme === 'dark' && logo.darkModeUrl ? logo.darkModeUrl : logo.imageUrl} 
+                  src={theme === 'light' && logo.darkModeUrl ? logo.darkModeUrl : logo.imageUrl} 
                   alt={logo.altText || `${logo.name} logo`} 
                   className="h-full w-auto object-contain" 
                 />
