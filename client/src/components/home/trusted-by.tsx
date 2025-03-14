@@ -44,11 +44,11 @@ export default function TrustedBy() {
             }}
           >
             {logos.map((logo) => (
-              <div key={logo.name} className="flex-shrink-0 h-12 w-36 flex items-center justify-center">
+              <div key={logo.name} className="flex-shrink-0 h-16 w-36 flex items-center justify-center">
                 <img 
                   src={logo.src} 
                   alt={`${logo.name} logo`} 
-                  className="h-full w-auto object-contain filter dark:brightness-100 brightness-0" 
+                  className="h-full w-auto object-contain filter dark:invert-0 invert" 
                 />
               </div>
             ))}

@@ -57,20 +57,14 @@ export default function Auth() {
     },
   });
 
-  const onLoginSubmit = (data: LoginFormValues) => {
-    console.log("Login data:", data);
-    // For now, simulate login and redirect to home
-    setTimeout(() => {
-      setLocation("/");
-    }, 1000);
+  const onLoginSubmit = () => {
+    // Immediately redirect to home on login attempt
+    setLocation("/");
   };
 
-  const onRegisterSubmit = (data: RegisterFormValues) => {
-    console.log("Register data:", data);
-    // For now, simulate registration and redirect to home
-    setTimeout(() => {
-      setLocation("/");
-    }, 1000);
+  const onRegisterSubmit = () => {
+    // Immediately redirect to home on register attempt
+    setLocation("/");
   };
 
   return (
@@ -165,7 +159,14 @@ export default function Auth() {
                           Remember me
                         </label>
                       </div>
-                      <a href="#" className="text-sm font-medium text-primary hover:underline">
+                      <a 
+                        href="#" 
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setLocation("/");
+                        }} 
+                        className="text-sm font-medium text-primary hover:underline"
+                      >
                         Forgot password?
                       </a>
                     </div>
@@ -289,18 +290,21 @@ export default function Auth() {
             <div className="grid grid-cols-3 gap-3 mb-6">
               <button
                 type="button"
+                onClick={() => setLocation("/")}
                 className="py-2 px-4 rounded-lg neu-social-button flex items-center justify-center"
               >
                 <FaGoogle className="text-red-500" />
               </button>
               <button
                 type="button"
+                onClick={() => setLocation("/")}
                 className="py-2 px-4 rounded-lg neu-social-button flex items-center justify-center"
               >
                 <FaMicrosoft className="text-blue-500" />
               </button>
               <button
                 type="button"
+                onClick={() => setLocation("/")}
                 className="py-2 px-4 rounded-lg neu-social-button flex items-center justify-center"
               >
                 <FaLinkedin className="text-[#0077b5]" />
