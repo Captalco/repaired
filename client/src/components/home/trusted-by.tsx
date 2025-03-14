@@ -14,6 +14,8 @@ export default function TrustedBy() {
     const fetchLogos = async () => {
       try {
         setLoading(true);
+        // In production with Netlify, this will be redirected to /.netlify/functions/api/logos/active
+        // In development, it will use the Express server directly
         const response = await fetch('/api/logos/active');
         if (!response.ok) {
           throw new Error('Failed to fetch logos');

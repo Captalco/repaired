@@ -60,6 +60,8 @@ export default function LogoManagement() {
   const fetchLogos = async () => {
     try {
       setLoading(true);
+      // In production with Netlify, this will be redirected to /.netlify/functions/api/logos
+      // In development, it will use the Express server directly
       const response = await fetch('/api/logos');
       if (!response.ok) {
         throw new Error('Failed to fetch logos');
