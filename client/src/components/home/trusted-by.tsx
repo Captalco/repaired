@@ -1,31 +1,63 @@
-import { useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Loader2 } from "lucide-react";
+import { CompanyLogo } from "@shared/schema";
 
 export default function TrustedBy() {
-  // Industry logos - doubled for a continuous effect
-  const logos = [
-    { name: "baldor", src: "/images/logos/baldor.png" },
-    { name: "lafert", src: "/images/logos/lafert.png" },
-    { name: "nae", src: "/images/logos/nae.png" },
-    { name: "nidec", src: "/images/logos/nidec.png" },
-    { name: "teco", src: "/images/logos/teco.png" },
-    { name: "toshiba", src: "/images/logos/toshiba.png" },
-    { name: "weg", src: "/images/logos/weg.png" },
-    { name: "worldwide", src: "/images/logos/worldwide.png" },
-    { name: "siemens", src: "/images/logos/siemens.png" },
-    { name: "marathon", src: "/images/logos/marathon.png" },
-    // Duplicate logos for seamless scrolling
-    { name: "baldor-2", src: "/images/logos/baldor.png" },
-    { name: "lafert-2", src: "/images/logos/lafert.png" },
-    { name: "nae-2", src: "/images/logos/nae.png" },
-    { name: "nidec-2", src: "/images/logos/nidec.png" },
-    { name: "teco-2", src: "/images/logos/teco.png" },
-    { name: "toshiba-2", src: "/images/logos/toshiba.png" },
-    { name: "weg-2", src: "/images/logos/weg.png" },
-    { name: "worldwide-2", src: "/images/logos/worldwide.png" },
-    { name: "siemens-2", src: "/images/logos/siemens.png" },
-    { name: "marathon-2", src: "/images/logos/marathon.png" }
-  ];
+  const [logos, setLogos] = useState<CompanyLogo[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchLogos = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('/api/logos/active');
+        if (!response.ok) {
+          throw new Error('Failed to fetch logos');
+        }
+        const data = await response.json();
+        setLogos(data.logos);
+        setError(null);
+      } catch (err) {
+        console.error('Error fetching logos:', err);
+        setError('Failed to load partner logos');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLogos();
+  }, []);
+
+  // Create a duplicate set for seamless scrolling
+  const displayLogos = logos.length ? [...logos, ...logos.map(logo => ({...logo, id: logo.id + 1000}))] : [];
+
+  if (loading) {
+    return (
+      <section className="py-12 bg-card overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 flex justify-center items-center min-h-[200px]">
+          <Loader2 className="h-8 w-8 animate-spin text-border" />
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="py-12 bg-card overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 text-center min-h-[200px] flex flex-col justify-center">
+          <p className="text-sm uppercase tracking-wider text-muted-foreground mb-2">Trusted by industry leaders</p>
+          <div className="w-20 h-1 bg-teal-500 mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Our partners' information is temporarily unavailable.</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (!logos.length) {
+    return null;
+  }
 
   return (
     <section className="py-12 bg-card overflow-hidden">
@@ -49,11 +81,11 @@ export default function TrustedBy() {
               ease: "linear"
             }}
           >
-            {logos.map((logo) => (
-              <div key={logo.name} className="flex-shrink-0 h-16 w-36 flex items-center justify-center">
+            {displayLogos.map((logo) => (
+              <div key={logo.id} className="flex-shrink-0 h-16 w-36 flex items-center justify-center">
                 <img 
-                  src={logo.src} 
-                  alt={`${logo.name} logo`} 
+                  src={logo.imageUrl} 
+                  alt={logo.altText || `${logo.name} logo`} 
                   className="h-full w-auto object-contain filter invert opacity-80 dark:invert-0 dark:opacity-90" 
                 />
               </div>
